@@ -39,4 +39,4 @@ jobs:
         REPO: self
         BRANCH: production
         FOLDER: dist
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
