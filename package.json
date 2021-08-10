@@ -6,7 +6,7 @@
     "scripts": {
         "postcss": "npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css -w",
         "build": "set NODE_ENV=production&&npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css & node ./build/builder.js",
-        "build_linux": "NODE_ENV=production&&npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css & node ./build/builder.js"
+        "build_linux": "NODE_ENV=production npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css & node ./build/builder.js"
     },
     "repository": {
         "type": "git",
