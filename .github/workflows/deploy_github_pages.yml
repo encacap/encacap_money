@@ -38,5 +38,5 @@ jobs:
       env:
         REPO: self
         BRANCH: production
-        FOLDER: resource
+        FOLDER: resources
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
