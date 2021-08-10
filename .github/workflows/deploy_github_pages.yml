@@ -30,6 +30,7 @@ jobs:
     - name: npm install and build
       run: |
         npm install
+        mkdir dist
         npm run build_linux
 
     # Deploy to local repo
