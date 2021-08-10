@@ -31,6 +31,7 @@ jobs:
       run: |
         npm install
         mkdir dist
+        cat > ./dist/test.txt
         npm run build_linux
 
     # Deploy to local repo
