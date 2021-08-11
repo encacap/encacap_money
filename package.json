@@ -6,7 +6,8 @@
     "scripts": {
         "postcss": "npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css -w",
         "build": "set NODE_ENV=production&&npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css&&node ./build/builder.js",
-        "build_linux": "NODE_ENV=production npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css&&node ./build/builder.js"
+        "build_linux": "NODE_ENV=production npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css&&node ./build/builder.js",
+        "webpack": "webpack --config webpack.config.js"
     },
     "repository": {
         "type": "git",
@@ -29,7 +30,9 @@
         "postcss": "^8.3.6",
         "postcss-cli": "^8.3.1",
         "postcss-import": "^14.0.2",
-        "tailwindcss": "^2.2.7"
+        "tailwindcss": "^2.2.7",
+        "webpack": "^5.50.0",
+        "webpack-cli": "^4.7.2"
     },
     "dependencies": {
         "@tailwindcss/forms": "^0.3.3"
