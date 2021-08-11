@@ -7,7 +7,7 @@
         "postcss": "npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css -w",
         "webpack": "webpack --config webpack.config.js",
         "build": "concurrently \"SET NODE_ENV=production\" \"npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css\" \"webpack --config webpack.config.js\" \"node ./build/builder.js\"",
-        "build_linux": "concurrently \"NODE_ENV=production\" \"npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css\" \"webpack --config webpack.config.js\" \"node ./build/builder.js\""
+        "build_linux": "concurrently \"NODE_ENV=production npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css\" \"NODE_ENV=production webpack --config webpack.config.js\" \"node ./build/builder.js\""
     },
     "repository": {
         "type": "git",
