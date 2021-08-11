@@ -23,7 +23,7 @@ const fsExtra = require("fs-extra");
             const stats = await fsPromise.stat(path);
 
             try {
-                if (stats.isDirectory() && !excludeFolders.includes(file)) {
+                if (stats.isDirectory() && !excludeFolders.includes(file) && file[0] !== ".") {
                     await copy(path, `${BUILD_FOLDER}${file}`);
                 } else if (stats.isFile() && includeFiles.includes(file)) {
                     await copy(path, `${BUILD_FOLDER}${file}`);
