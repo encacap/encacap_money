@@ -33,6 +33,7 @@
                             hover:bg-indigo-700
                             duration-200
                         "
+                        id="add_expenses"
                     >
                         Thêm khoản chi mới
                     </button>
@@ -50,16 +51,21 @@
                 </ul>
             </div>
         </section>
-        <section class="modal fixed top-0 left-0 right-0 bottom-0 flex">
+        <section class="modal fixed top-0 left-0 right-0 bottom-0 flex" id="add_expenses_modal">
             <div class="absolute w-full h-full bg-black opacity-60"></div>
             <div class="relative m-auto w-1/2 lg:w-1/3 min-h-20 bg-white rounded-md px-10 pt-8 pb-10">
                 <div class="header border-b-2 border-gray-200 pb-4">
                     <div class="title font-semibold">Thêm khoản chi mới</div>
                 </div>
-                <form class="">
-                    <div class="form-block mt-8">
+                <form class="mt-8">
+                    <div class="form-message hidden mb-4 ring-2 ring-yellow-400 rounded-md bg-yellow-100 px-5 py-3">
+                        Tên khoản chi không được phép để trống
+                    </div>
+                    <div class="form-block">
                         <input
                             type="text"
+                            name="expenses_name"
+                            id="expenses_name"
                             class="
                                 w-full
                                 ring-2 ring-gray-200
@@ -75,6 +81,8 @@
                         <div class="form-group relative">
                             <input
                                 type="text"
+                                name="expenses_amount"
+                                id="expenses_amount"
                                 class="
                                     w-full
                                     ring-2 ring-gray-200
@@ -90,6 +98,8 @@
                         <div class="form-group">
                             <input
                                 type="date"
+                                name="expenses_date"
+                                id="expenses_date"
                                 class="
                                     w-full
                                     ring-2 ring-gray-200
@@ -128,6 +138,7 @@
                                 duration-200
                                 focus:ring-2 focus:ring-gray-900
                             "
+                            id="add_expenses_close"
                         >
                             Huỷ
                         </button>
@@ -161,5 +172,6 @@
                 </form>
             </div>
         </section>
+        <script src="/assets/js/index.js"></script>
     </body>
 </html>
