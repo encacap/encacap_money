@@ -4,8 +4,6 @@ const fsExtra = require("fs-extra");
 (async () => {
     const BUILD_FOLDER = "./dist/";
 
-    console.log(process.env.NODE_ENV);
-
     const copy = async (src, dest) => {
         try {
             await fsExtra.copy(src, dest);
