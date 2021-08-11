@@ -5,9 +5,9 @@
     "main": "index.js",
     "scripts": {
         "postcss": "npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css -w",
-        "build": "set NODE_ENV=production&&npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css&&webpack --config webpack.config.js&&node ./build/builder.js",
-        "build_linux": "NODE_ENV=production npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css&&webpack --config webpack.config.js&&node ./build/builder.js",
-        "webpack": "webpack --config webpack.config.js"
+        "webpack": "webpack --config webpack.config.js",
+        "build": "concurrently \"SET NODE_ENV=production\" \"npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css\" \"webpack --config webpack.config.js\" \"node ./build/builder.js\"",
+        "build_linux": "concurrently \"NODE_ENV=production\" \"npx postcss ./resources/scss/app.scss -o ./assets/css/app.min.css\" \"webpack --config webpack.config.js\" \"node ./build/builder.js\""
     },
     "repository": {
         "type": "git",
@@ -35,6 +35,7 @@
         "webpack-cli": "^4.7.2"
     },
     "dependencies": {
-        "@tailwindcss/forms": "^0.3.3"
+        "@tailwindcss/forms": "^0.3.3",
+        "concurrently": "^6.2.1"
     }
 }
