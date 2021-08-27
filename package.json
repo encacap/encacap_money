@@ -4,7 +4,7 @@
     "description": "Encacap Money Manager",
     "main": "index.js",
     "scripts": {
-        "watch-css": "postcss ./resources/scss/app.scss -o ./assets/css/app.min.css -w",
+        "watch-css": "SET NODE_ENV=production&&postcss ./resources/scss/app.scss -o ./assets/css/app.min.css -w",
         "build-css": "postcss ./resources/scss/app.scss -o ./assets/css/app.min.css",
         "watch-js": "webpack --config webpack.config.js -w",
         "build_windows": "SET NODE_ENV=production&&postcss ./resources/scss/app.scss -o ./assets/css/app.min.css&&webpack --config webpack.config.js&&node ./build/builder.js",
@@ -30,7 +30,7 @@
         "postcss": "^8.3.6",
         "postcss-cli": "^8.3.1",
         "postcss-import": "^14.0.2",
-        "postcss-scss": "^4.0.0",
+        "precss": "^4.0.0",
         "tailwindcss": "^2.2.7",
         "webpack": "^5.50.0",
         "webpack-cli": "^4.7.2"
