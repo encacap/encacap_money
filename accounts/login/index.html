@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="/assets/images/encacap_icon.svg" type="image/x-icon" />
+        <link rel="stylesheet" href="/assets/css/app.min.css?version=210811.02" />
+        <title>Đăng nhập - Encacap Accounts</title>
+    </head>
+    <body>
+        <div class="flex w-full h-screen box-border">
+            <div class="m-auto rounded-lg border-2 border-gray-100 p-7 px-10 pb-12" style="width: 480px">
+                <div class="flex">
+                    <img class="w-10 mt-6" src="/assets/images/encacap_icon.svg" alt="Encacap Accounts" />
+                </div>
+                <div class="py-3">
+                    <div class="mt-4 font-semibold text-xl">Đăng nhập</div>
+                    <div class="mt-1">Bằng Tài khoản Encacap của bạn</div>
+                </div>
+                <form action="" class="form">
+                    <div class="form-body">
+                        <label class="form-group" for="username">
+                            <div class="form-label">Tên đăng nhập hoặc địa chỉ Email</div>
+                            <input
+                                type="text"
+                                name="username"
+                                id="username"
+                                placeholder="Ex: your_email@gmail.com"
+                                autofocus
+                            />
+                            <div class="form-message">Tên đăng nhập hoặc Email không được phép để trống</div>
+                        </label>
+                        <label class="form-group" for="password">
+                            <div class="form-label">Mật khẩu</div>
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Ex: ••••••••••••••••••••"
+                            />
+                            <div class="form-message">Tên đăng nhập hoặc Email không được phép để trống</div>
+                        </label>
+                    </div>
+                    <div class="form-action flex justify-end">
+                        <button
+                            type="submit"
+                            class="
+                                whitespace-nowrap
+                                flex
+                                items-center
+                                justify-center
+                                w-full
+                                mt-4
+                                px-4
+                                py-2
+                                border border-transparent
+                                outline-none
+                                rounded-md
+                                shadow-sm
+                                text-sm
+                                font-semibold
+                                text-white
+                                bg-indigo-600
+                                hover:bg-indigo-700
+                                duration-200
+                                focus:ring-2 focus:ring-blue-900
+                            "
+                        >
+                            Đăng nhập
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
