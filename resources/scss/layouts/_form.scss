@@ -12,7 +12,7 @@
     }
 
     &-message {
-        @apply hidden mb-2;
+        @apply hidden mb-2 text-sm;
     }
 
     &-label {
@@ -22,7 +22,7 @@
     }
 
     &-group {
-        @apply block pt-5 pb-2;
+        @apply block pt-5 pb-2 cursor-text;
 
         transition: border-color $transition-duration ease-in-out;
 
@@ -40,10 +40,6 @@
 
         &.invalid {
             @apply border-red-500;
-
-            & .form-label {
-                @apply text-red-500;
-            }
 
             & .form-message {
                 @apply block text-red-500;

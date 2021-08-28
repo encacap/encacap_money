@@ -3,7 +3,9 @@
 @import "tailwindcss/utilities";
 
 @import "./abstracts/_variables.scss";
-@import "./abstracts/_mixins.scss";
-@import "./abstracts/_functions.scss";
+/* @import "./abstracts/_mixins.scss";
+@import "./abstracts/_functions.scss"; */
+
+@import "./components/_button.scss";
 
 @import "./layouts/_form.scss";

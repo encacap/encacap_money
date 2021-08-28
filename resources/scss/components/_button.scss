@@ -1,0 +1,35 @@
+.btn {
+    @apply whitespace-nowrap
+        flex
+        items-center
+        justify-center
+        w-full
+        mt-4
+        px-4
+        py-2
+        border border-transparent
+        outline-none
+        rounded-md
+        shadow-sm
+        text-sm
+        font-semibold
+        duration-200;
+
+    &-primary {
+        @apply text-white
+                bg-indigo-600;
+
+        &:hover:not(:disabled) {
+            @apply bg-indigo-700;
+        }
+
+        &:active:not(:disabled),
+        &:focus:not(:disabled) {
+            @apply ring-2 ring-blue-900;
+        }
+
+        &:disabled {
+            @apply bg-indigo-300;
+        }
+    }
+}
