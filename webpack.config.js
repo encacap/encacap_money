@@ -1,11 +1,14 @@
 const mode = process.env.NODE_ENV || "development";
 const isDevlopment = mode === "development";
+const loginEntry = isDevlopment
+    ? "./resources/js/login.js"
+    : ["./resources/js/login.js", "./resources/js/validator.js"];
 
 module.exports = {
     mode,
     entry: {
         app: "./resources/js/app.js",
-        login: ["./resources/js/login.js", isDevlopment ? "./resources/js/validator.js" : null],
+        login: loginEntry,
     },
     output: {
         filename: "[name].js",
