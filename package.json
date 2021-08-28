@@ -4,11 +4,12 @@
     "description": "Encacap Money Manager",
     "main": "index.js",
     "scripts": {
-        "watch-css": "SET NODE_ENV=production&&postcss ./resources/scss/app.scss -o ./assets/css/app.min.css -w",
-        "build-css": "postcss ./resources/scss/app.scss -o ./assets/css/app.min.css",
-        "watch-js": "webpack --config webpack.config.js -w",
-        "build_windows": "SET NODE_ENV=production&&postcss ./resources/scss/app.scss -o ./assets/css/app.min.css&&webpack --config webpack.config.js&&node ./build/builder.js",
-        "build": "NODE_ENV=production postcss ./resources/scss/app.scss -o ./assets/css/app.min.css&&NODE_ENV=production webpack --config webpack.config.js&&NODE_ENV=production node ./build/builder.js"
+        "build:js": "webpack --config webpack.config.js",
+        "build:css": "postcss ./resources/scss/app.scss -o ./assets/css/app.min.css",
+        "watch:js": "npm run build:js -- -w",
+        "watch:css": "npm run build:css -- -w",
+        "build:windows": "SET NODE_ENV=production&&npm run build:css&&npm run build:js&&node ./build/builder.js",
+        "build": "NODE_ENV=production npm run build:css&&NODE_ENV=production npm run build:js&&NODE_ENV=production node ./build/builder.js"
     },
     "repository": {
         "type": "git",
