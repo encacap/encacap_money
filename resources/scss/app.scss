@@ -1,59 +1,9 @@
-@import "./variables";
-
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-.form {
-    & input {
-        @apply block w-full py-2;
+@import "./abstracts/_variables.scss";
+@import "./abstracts/_mixin.scss";
+@import "./abstracts/_functions.scss";
 
-        &:focus {
-            @apply outline-none ring-0 border-0;
-        }
-    }
-
-    &-body {
-        @apply mt-6 rounded-lg border-2 border-gray-100 px-7 py-1;
-    }
-
-    &-message {
-        @apply hidden mb-2;
-    }
-
-    &-label {
-        @apply block;
-
-        transition: color $transition-duration ease-in-out;
-    }
-
-    &-group {
-        @apply block pt-5 pb-2;
-
-        transition: border-color $transition-duration ease-in-out;
-
-        &:not(:last-child) {
-            @apply pb-3 border-b-2 border-gray-100;
-        }
-
-        &.typing {
-            @apply border-indigo-600;
-
-            & .form-label {
-                @apply text-indigo-600;
-            }
-        }
-
-        &.invalid {
-            @apply border-red-500;
-
-            & .form-label {
-                @apply text-red-500;
-            }
-
-            & .form-message {
-                @apply block text-red-500;
-            }
-        }
-    }
-}
+@import "./layouts/_form.scss";
