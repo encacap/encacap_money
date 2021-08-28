@@ -5,7 +5,7 @@ module.exports = {
     mode,
     entry: {
         app: "./resources/js/app.js",
-        login: ["./resources/js/login.js", isDevlopment && "./resources/js/validator.js"],
+        login: ["./resources/js/login.js", isDevlopment ? "./resources/js/validator.js" : null],
     },
     output: {
         filename: "[name].js",
