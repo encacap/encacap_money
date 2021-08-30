@@ -2,6 +2,7 @@ export default class Validator {
     constructor(formSelector, options) {
         this.form = document.querySelector(formSelector);
         this.inputs = this.form.querySelectorAll("input");
+        this.options = options;
 
         this.initialize.call(this);
         this.validate.bind(this);
@@ -9,6 +10,7 @@ export default class Validator {
 
     initialize() {
         const { inputs } = this;
+        const { autofocus } = this.options;
 
         inputs.forEach((input) => {
             const formGroup = input.closest(".form-group");
@@ -25,6 +27,12 @@ export default class Validator {
             input.oninput = () => {
                 this.clearError(input);
             };
+
+            if (autofocus) {
+                if (input.matches(autofocus)) {
+                    input.focus();
+                }
+            }
         });
     }
 

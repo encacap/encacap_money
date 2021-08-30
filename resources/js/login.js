@@ -1,7 +1,9 @@
 import Validator from "./validator";
 
 (() => {
-    const validator = new Validator("#login", {});
+    const validator = new Validator("#login", {
+        autofocus: "#username",
+    });
 
     validator.validate({
         "#username": [
