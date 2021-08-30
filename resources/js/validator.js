@@ -2,6 +2,7 @@ export default class Validator {
     constructor(formSelector, options) {
         this.form = document.querySelector(formSelector);
         this.inputs = this.form.querySelectorAll("[name]:not(ion-icon)");
+        this.error = this.form.querySelector(".form-error");
         this.options = options;
 
         this.initialize.call(this);
@@ -52,12 +53,37 @@ export default class Validator {
             value?.trim?.().length <= length ? undefined : message || `Must be at most ${length} characters`;
     }
 
-    showError(input, errorMessage) {
+    getNodeFromSelector(selector) {
+        let input = selector;
+        if (typeof selector === "string") {
+            input = this.form.querySelector(selector);
+
+            if (!input) {
+                throw Error(`No input found for selector: ${selector}`);
+            }
+        }
+        return input;
+    }
+
+    showGlobalError(message) {
+        const { error: errorNode } = this;
+
+        errorNode.textContent = message;
+        errorNode.classList.add("show");
+    }
+
+    hideGlobalError() {
+        this.error.classList.remove("show");
+    }
+
+    showError(selector, message) {
+        const input = this.getNodeFromSelector(selector);
+
         const formGroup = input.closest(".form-group");
         const formMessage = formGroup.querySelector(".form-message");
 
         formGroup.classList.add("invalid");
-        formMessage.textContent = errorMessage;
+        formMessage.textContent = message;
     }
 
     clearError(input) {
@@ -103,9 +129,9 @@ export default class Validator {
         this.rules = testFunctions;
     }
 
-    validateInput(inputSelector) {
-        const input = this.form.querySelector(inputSelector);
-        const rules = this.rules[inputSelector];
+    validateInput(selector) {
+        const input = this.form.querySelector(selector);
+        const rules = this.rules[selector];
 
         if (!rules) {
             return true;
@@ -159,6 +185,11 @@ export default class Validator {
             return;
         }
 
-        console.log(data);
+        if (typeof this.submit === "function") {
+            this.submit(data);
+            return;
+        }
+
+        this.form.submit();
     }
 }
