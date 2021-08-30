@@ -1,10 +1,14 @@
 .form {
-    & input {
+    & input:not([type="checkbox"]) {
         @apply block w-full py-2;
 
         &:focus {
             @apply outline-none ring-0 border-0;
         }
+    }
+
+    & input[type="checkbox"] {
+        margin-right: 13px;
     }
 
     &-body {
