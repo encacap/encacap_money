@@ -22,23 +22,28 @@
                     <div class="form-body">
                         <label class="form-group" for="username">
                             <div class="form-label">Tên đăng nhập hoặc địa chỉ Email</div>
-                            <input
-                                type="text"
-                                name="username"
-                                id="username"
-                                placeholder="Ex: your_email@gmail.com"
-                                autofocus
-                            />
+                            <div class="form-input-group">
+                                <ion-icon name="mail-outline" class="form-icon"></ion-icon>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    placeholder="Ex: your_email@gmail.com"
+                                />
+                            </div>
                             <div class="form-message">Tên đăng nhập hoặc Email không được phép để trống</div>
                         </label>
                         <label class="form-group" for="password">
                             <div class="form-label">Mật khẩu</div>
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                placeholder="Ex: ••••••••••••••••••••"
-                            />
+                            <div class="form-input-group">
+                                <ion-icon name="key-outline" class="form-icon"></ion-icon>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    placeholder="Ex: ••••••••••••••••••••"
+                                />
+                            </div>
                             <div class="form-message">Tên đăng nhập hoặc Email không được phép để trống</div>
                         </label>
                     </div>
@@ -48,6 +53,7 @@
                 </form>
             </div>
         </div>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" async></script>
         <script src="../../assets/js/login.js?version=210828" async></script>
     </body>
 </html>
