@@ -1,7 +1,7 @@
 export default class Validator {
     constructor(formSelector, options) {
         this.form = document.querySelector(formSelector);
-        this.inputs = this.form.querySelectorAll("input");
+        this.inputs = this.form.querySelectorAll("[name]:not(ion-icon)");
         this.options = options;
 
         this.initialize.call(this);
@@ -9,7 +9,7 @@ export default class Validator {
     }
 
     initialize() {
-        const { inputs } = this;
+        const { inputs, form } = this;
         const { autofocus } = this.options;
 
         inputs.forEach((input) => {
@@ -34,6 +34,8 @@ export default class Validator {
                 }
             }
         });
+
+        form.onsubmit = (event) => this.handleSubmit(event);
     }
 
     required(message) {
@@ -105,6 +107,10 @@ export default class Validator {
         const input = this.form.querySelector(inputSelector);
         const rules = this.rules[inputSelector];
 
+        if (!rules) {
+            return true;
+        }
+
         let errorMessage;
 
         rules.forEach((rule) => {
@@ -119,5 +125,40 @@ export default class Validator {
         }
 
         return !errorMessage;
+    }
+
+    handleSubmit(event) {
+        const { inputs } = this;
+        let isSuccess = true;
+        let data = {};
+
+        event.preventDefault();
+
+        inputs.forEach((input) => {
+            const inputName = input.name;
+            const isError = this.validateInput(`#${inputName}`);
+            let value;
+
+            if (isSuccess && !isError) {
+                isSuccess = false;
+            }
+
+            if (input.type === "checkbox") {
+                value = input.checked;
+            } else {
+                value = input.value?.trim();
+            }
+
+            data[inputName] = {
+                value,
+                disabled: input.disabled,
+            };
+        });
+
+        if (!isSuccess) {
+            return;
+        }
+
+        console.log(data);
     }
 }
