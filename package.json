@@ -26,6 +26,7 @@
     "homepage": "https://github.com/encacap/encacap_money#readme",
     "devDependencies": {
         "autoprefixer": "^10.3.1",
+        "axios": "^0.21.1",
         "cssnano": "^5.0.7",
         "fs-extra": "^10.0.0",
         "postcss": "^8.3.6",
