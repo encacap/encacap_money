@@ -1,4 +1,10 @@
-(() => {
+import verifyUser from "./utils/verifyUser";
+
+(async () => {
+    const userInformation = await verifyUser();
+
+    console.log(userInformation);
+
     const addExpensesButton = document.querySelector("#add_expenses");
 
     const addExpensesModal = document.querySelector("#add_expenses_modal");
