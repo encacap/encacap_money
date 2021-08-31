@@ -2,11 +2,14 @@ export default class Validator {
     constructor(formSelector, options) {
         this.form = document.querySelector(formSelector);
         this.inputs = this.form.querySelectorAll("[name]:not(ion-icon)");
+        this.buttons = this.form.querySelectorAll("button");
         this.error = this.form.querySelector(".form-error");
         this.options = options;
+        this.disabledInputs = [];
 
         this.initialize.call(this);
         this.validate.bind(this);
+        // this.disabled.bind(this);
     }
 
     initialize() {
@@ -15,6 +18,11 @@ export default class Validator {
 
         inputs.forEach((input) => {
             const formGroup = input.closest(".form-group");
+
+            if (input.disabled) {
+                const { name } = input;
+                this.disabledInputs.push(name);
+            }
 
             input.onfocus = () => {
                 formGroup.classList.add("typing");
@@ -72,11 +80,21 @@ export default class Validator {
         errorNode.classList.add("show");
     }
 
-    hideGlobalError() {
+    clearGlobalError() {
         this.error.classList.remove("show");
     }
 
     showError(selector, message) {
+        if (!message && selector) {
+            message = selector;
+            selector = null;
+        }
+
+        if (!selector) {
+            this.showGlobalError(message);
+            return;
+        }
+
         const input = this.getNodeFromSelector(selector);
 
         const formGroup = input.closest(".form-group");
@@ -86,12 +104,75 @@ export default class Validator {
         formMessage.textContent = message;
     }
 
-    clearError(input) {
+    clearError(selector) {
+        if (!selector) {
+            this.clearGlobalError();
+            return;
+        }
+
+        const input = this.getNodeFromSelector(selector);
         const formGroup = input.closest(".form-group");
         const formMessage = formGroup.querySelector(".form-message");
 
         formGroup.classList.remove("invalid");
         formMessage.textContent = "";
+    }
+
+    showLoading(selector) {
+        if (!selector) {
+            this.form.classList.add("loading");
+            return;
+        }
+
+        const input = this.getNodeFromSelector(selector);
+        input.classList.add("loading");
+    }
+
+    hideLoading(selector) {
+        if (!selector) {
+            this.form.classList.remove("loading");
+            return;
+        }
+
+        const input = this.getNodeFromSelector(selector);
+
+        input?.classList.remove("loading");
+    }
+
+    disabled(selector) {
+        if (!selector) {
+            this.disabledAllInputs();
+            return;
+        }
+
+        const input = this.getNodeFromSelector(selector);
+        input.disabled = true;
+    }
+
+    abled(selector) {
+        if (!selector) {
+            this.disabledAllInputs(false);
+            return;
+        }
+
+        const input = this.getNodeFromSelector(selector);
+        input.disabled = false;
+    }
+
+    disabledAllInputs(disabled = true) {
+        this.inputs.forEach((input) => {
+            const { name } = input;
+            if (!this.disabledInputs.includes(name)) {
+                input.disabled = disabled;
+            }
+        });
+
+        this.buttons.forEach((button) => {
+            const { name } = button;
+            if (!this.disabledInputs.includes(name)) {
+                button.disabled = disabled;
+            }
+        });
     }
 
     validate(rules) {
