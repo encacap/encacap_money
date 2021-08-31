@@ -1,8 +1,8 @@
-import Validator from "./validator";
+import Form from "./form";
 import axios from "axios";
 
 (() => {
-    const validator = new Validator("#login", {
+    const validator = new Form("#login", {
         autofocus: "#username",
     });
 
