@@ -10,7 +10,10 @@
     </head>
     <body>
         <div class="flex w-full h-screen box-border">
-            <div class="m-auto rounded-lg border-2 border-gray-100 p-7 px-10 pb-12" style="width: 480px">
+            <div
+                class="relative m-auto rounded-lg border-2 border-gray-100 p-7 px-10 pb-12 overflow-hidden"
+                style="width: 480px"
+            >
                 <div class="flex">
                     <img class="w-10 mt-6" src="/assets/images/encacap_icon.svg" alt="Encacap Accounts" />
                 </div>
@@ -22,15 +25,10 @@
                     <div class="form-error">Tên đăng nhập hoặc mật khẩu không đúng</div>
                     <div class="form-body">
                         <label class="form-group" for="username">
-                            <div class="form-label">Tên đăng nhập hoặc địa chỉ Email</div>
+                            <div class="form-label">Tên đăng nhập</div>
                             <div class="form-input-group">
                                 <ion-icon name="mail-outline" class="form-icon"></ion-icon>
-                                <input
-                                    type="text"
-                                    name="username"
-                                    id="username"
-                                    placeholder="Ex: your_email@gmail.com"
-                                />
+                                <input type="text" name="username" id="username" placeholder="Ex: your_user_name" />
                             </div>
                             <div class="form-message">Tên đăng nhập hoặc Email không được phép để trống</div>
                         </label>
@@ -49,7 +47,10 @@
                         </label>
                     </div>
                     <div class="form-action flex justify-end">
-                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        <button type="submit" class="btn btn-primary">
+                            <div class="spinner spinner-white w-5 h-5 mr-2"></div>
+                            Đăng nhập
+                        </button>
                     </div>
                 </form>
             </div>
