@@ -1,8 +1,6 @@
 const mode = process.env.NODE_ENV || "development";
 const isDevlopment = mode === "development";
-const loginEntry = isDevlopment
-    ? ["./resources/js/login.js", "./resources/js/validator.js"]
-    : "./resources/js/login.js";
+const loginEntry = isDevlopment ? ["./resources/js/login.js", "./resources/js/form.js"] : "./resources/js/login.js";
 
 module.exports = {
     mode,
