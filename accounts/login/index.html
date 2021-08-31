@@ -10,7 +10,10 @@
     </head>
     <body>
         <div class="flex w-full h-screen box-border">
-            <div class="m-auto rounded-lg border-2 border-gray-100 p-7 px-10 pb-12" style="width: 480px">
+            <div
+                class="relative m-auto rounded-lg border-2 border-gray-100 p-7 px-10 pb-12 overflow-hidden"
+                style="width: 480px"
+            >
                 <div class="flex">
                     <img class="w-10 mt-6" src="/assets/images/encacap_icon.svg" alt="Encacap Accounts" />
                 </div>
@@ -49,7 +52,10 @@
                         </label>
                     </div>
                     <div class="form-action flex justify-end">
-                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        <button type="submit" class="btn btn-primary">
+                            <div class="spinner spinner-white w-5 h-5 mr-2"></div>
+                            Đăng nhập
+                        </button>
                     </div>
                 </form>
             </div>

@@ -75,4 +75,14 @@
             }
         }
     }
+
+    .spinner {
+        @apply hidden;
+    }
+
+    &.loading {
+        .spinner {
+            @apply inline-block;
+        }
+    }
 }

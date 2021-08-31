@@ -1,0 +1,7 @@
+.spinner {
+    @apply inline-block rounded-full border-2 border-indigo-500 animate-spin;
+
+    &-white {
+        @apply border-white border-t-transparent;
+    }
+}
