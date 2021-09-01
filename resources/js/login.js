@@ -8,6 +8,10 @@ import axios from "axios";
         autofocus: "#username",
     });
 
+    const showUnexpectedError = () => {
+        form.showError("Đã xảy ra lỗi không xác định. Vui lòng thử lại sau!");
+    };
+
     form.validate({
         "#username": [
             { rule: "required", message: "Tên đăng nhập không được phép để trống" },
@@ -63,7 +67,7 @@ import axios from "axios";
                         }
                         form.showError("Tên đăng nhập hoặc mật khẩu không chính xác.");
                     } else {
-                        form.showError("Đã xảy ra lỗi không xác định. Vui lòng thử lại sau!");
+                        showUnexpectedError();
                         return;
                     }
 
@@ -71,8 +75,10 @@ import axios from "axios";
                     form.abled();
                     form.focus(inputFocusSelector);
                 } else {
-                    form.showError("Đã xảy ra lỗi không xác định. Vui lòng thử lại sau!");
+                    showUnexpectedError();
                 }
+            } else {
+                showUnexpectedError();
             }
         }
     };
