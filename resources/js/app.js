@@ -1,9 +1,28 @@
 import verifyUser from "./utils/verifyUser";
+import axios from "axios";
+import API from "./configs/api";
 
 (async () => {
-    const userInformation = await verifyUser();
+    const verifiedToken = await verifyUser();
+    const requestHeaders = {
+        Authorization: `Bearer ${verifiedToken}`,
+    };
+    const requestConfigs = {
+        headers: requestHeaders,
+    };
 
-    console.log(userInformation);
+    let payments;
+
+    try {
+        const response = await axios.get(`${API.gateway}/money/encacap/`, requestConfigs);
+        payments = response.data;
+    } catch (error) {
+        console.log(error);
+    }
+
+    console.log(payments);
+
+    // Add expenses modal
 
     const addExpensesButton = document.querySelector("#add_expenses");
 
