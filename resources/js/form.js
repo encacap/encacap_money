@@ -175,6 +175,13 @@ export default class Validator {
         });
     }
 
+    focus(selector) {
+        if (!selector) return;
+
+        const input = this.getNodeFromSelector(selector);
+        input.focus();
+    }
+
     validate(rules) {
         const testFunctions = {};
 
