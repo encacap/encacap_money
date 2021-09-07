@@ -2,3 +2,5 @@
 /dist/
 /assets/css/
 /assets/js/
+
+package-lock.json
