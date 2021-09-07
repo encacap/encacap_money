@@ -1,6 +1,24 @@
 import axios from "axios";
 import API from "../configs/api";
 
+const refreshToken = async (tokenRefresh) => {
+    try {
+        const response = await axios.post(`${API.gateway}/auth/token/refresh`, {
+            data: {
+                attributes: {
+                    refreshToken: tokenRefresh,
+                },
+            },
+        });
+
+        const { data } = response.data;
+
+        return data.attributes.token;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export default async () => {
     const userConfigs = JSON.parse(localStorage.getItem("userConfigs"));
 
@@ -9,7 +27,7 @@ export default async () => {
         return undefined;
     }
 
-    const { token } = userConfigs;
+    const { token, refreshToken: tokenRefresh } = userConfigs;
 
     try {
         await axios.get(`${API.gateway}/user/verify`, {
@@ -24,13 +42,18 @@ export default async () => {
             const { code } = data.errors[0];
 
             if (code === "ERR_AUTH_TOKEN_EXPIRED") {
-                // Refresh Token
+                const newToken = await refreshToken(tokenRefresh);
+
+                userConfigs.token = newToken;
+                window.localStorage.setItem("userConfigs", JSON.stringify(userConfigs));
+
+                return newToken;
             } else {
                 window.location.href = "/accounts/login";
             }
         }
 
-        return undefined;
+        window.location.href = "/accounts/login";
     }
 
     return token;
